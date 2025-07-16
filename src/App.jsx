@@ -1,10 +1,14 @@
-import React from 'react'
+import {Header,Footer} from './components'
+import AllRoutes from './routes/AllRoutes'
 
 const App = () => {
   return (
-    <div>
-      <h1 className=''>This is App Component</h1>
-    </div>
+    <>
+     <Header/>
+     {/* <AllRoutes/>
+     <Footer/> */}
+
+    </>
   )
 }
 
