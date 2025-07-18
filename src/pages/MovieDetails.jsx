@@ -6,7 +6,7 @@ import backup from "../assets/backup.svg";
 export const MovieDetails = (props) => {
   const { id } = useParams();
   const navigator = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState("");
   const imdb = `https://www.imdb.com/title/${movie.imdb_id}`;
   const key = import.meta.env.VITE_API_KEY;
@@ -24,10 +24,13 @@ export const MovieDetails = (props) => {
         if (!response.ok) {
           throw new Error(`The Error Status ${response.status}`);
         }
+        setLoading(true);
         const json = await response.json();
         setMovie(json);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchMovies();
@@ -37,41 +40,30 @@ export const MovieDetails = (props) => {
     document.title = `${movie.title}`;
   });
   return (
-    // <div className="h-screen bg-primary flex justify-center pt-10">
-    //   <div className="flex h-[75%] object-contain w-[75%] rounded-md overflow-hidden shadow-2xl  bg-black/50">
-    //     <img src={image} className="w-90 h-full " alt="" />
-
-    //     <div className="text-white px-10 py-15 space-y-3">
-    //       <h1 className="text-fourth font-bold text-4xl">{movie.title}</h1>
-
-    //       <p>{movie.overview}</p>
-    //       <button
-    //         className="px-10 py-3 bg-fourth text-primary rounded-md "
-    //         onClick={() => window.open(imdb)}
-    //       >
-    //         Watch on IMDB
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
-
     <div className="bg-primary h-screen p-4">
-      <div className="md:flex md:w-full md:space-x-10 object-contain space-y-3 rounded-md h-full w-70">
-        <img className="md:w-100 md:h-130 w-40 rounded-md " src={image} alt="" />
-        <div className="space-y-4">
-          
-          <h1 className="text-fourth text-3xl">{movie.title}</h1>
-          <p className="text-white md:w-200">{movie.overview}</p>
-          <button
-            className="px-10 py-3 bg-fourth text-primary rounded-md "
-            onClick={() => window.open(imdb)}
-          >
-            Watch on IMDB
-          </button>
+      {loading ? (
+        <div className="flex justify-center items-center h-40">
+          <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
         </div>
-      </div>
-
-      <div></div>
+      ) : (
+        <div className="md:flex md:w-full md:space-x-10 object-contain space-y-3 rounded-md h-full w-70">
+          <img
+            className="md:w-100 md:h-130 w-40 rounded-md "
+            src={image}
+            alt=""
+          />
+          <div className="space-y-4">
+            <h1 className="text-fourth text-3xl">{movie.title}</h1>
+            <p className="text-white md:w-200">{movie.overview}</p>
+            <button
+              className="px-10 py-3 bg-fourth text-primary rounded-md "
+              onClick={() => window.open(imdb)}
+            >
+              Watch on IMDB
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
