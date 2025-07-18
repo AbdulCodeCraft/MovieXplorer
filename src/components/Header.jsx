@@ -1,17 +1,27 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import {Menu,X} from "lucide-react";
+import { useState } from "react";
 
 export const Header = () => {
   const navigator = useNavigate();
+  const [menuOpen,setMenuOpen] = useState(false)
   const handleSearch = (e) =>{
     e.preventDefault();
     const queryTerm = e.target.search.value;
+    setMenuOpen(false);
     e.target.reset();
     return navigator(`/search?q=${queryTerm}`);
   }
   return (
+    <>
     <div className="bg-secondary h-15  flex justify-between items-center p-6 text-fourth">
       <h1 className="text-2xl ">MovieXplorer</h1>
-      <div className="flex gap-6">
+
+    <button className="md:hidden" onClick={()=>(setMenuOpen(!menuOpen))}>
+      {menuOpen? <X size={28}/> : <Menu size={28}/>}
+    </button>
+
+      <div className="hidden md:flex gap-6">
         <ul className="flex gap-15 items-center">
           <li>
             <NavLink to="/"> Home</NavLink>
@@ -39,5 +49,6 @@ export const Header = () => {
       </form>
       </div>
     </div>
+    </>
   );
 };

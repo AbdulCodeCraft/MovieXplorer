@@ -21,8 +21,8 @@ export const MovieList = (props) => {
       <div>
         {props.title == "Your Guide to greate movies" ? (
         <div className="h-100 space-y-3 bg-primary flex justify-center items-center text-white flex-col ">
-          <h1 className="text-6xl ">Welcome to MovieXplorer</h1>
-          <p className="w-200 text-center">
+          <h1 className="md:text-6xl text-2xl ">Welcome to MovieXplorer</h1>
+          <p className="md:w-200 text-sm text-center">
             Dive into the ultimate cinematic adventure! Discover, explore, and
             connect with a vast universe of films. From timeless classics to the
             latest blockbusters, MovieXplorer is your personal guide to
