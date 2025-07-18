@@ -1,15 +1,18 @@
-import {Header,Footer} from './components'
-import AllRoutes from './routes/AllRoutes'
+import { Header, Footer, Card } from "./components";
+import AllRoutes from "./routes/AllRoutes";
 
 const App = () => {
   return (
     <>
-     <Header/>
-     {/* <AllRoutes/>
-     <Footer/> */}
-
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow">
+           <AllRoutes />
+        </main>
+        <Footer />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
