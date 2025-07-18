@@ -12,7 +12,7 @@ export const Search = (props) => {
     document.title = `Search Result for ${queryTerm}`;
   }, [queryTerm]);
   return (
-    <div className="bg-primary h-screen">
+    <div className="bg-primary min-h-screen">
       <div className="flex flex-col space-y-6 justify-center bg-primary p-10 px-10">
         <div className="text-fourth text-lg">
           {movies.length == 0 ? (
