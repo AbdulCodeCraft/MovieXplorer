@@ -18,7 +18,7 @@ export const MovieList = (props) => {
   <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
 </div>
     ):(
-      <div>
+      <div className="mt-20">
         {props.title == "Your Guide to greate movies" ? (
         <div className="h-100 space-y-3 bg-primary flex justify-center items-center text-white flex-col ">
           <h1 className="md:text-6xl text-2xl ">Welcome to MovieXplorer</h1>
@@ -40,7 +40,7 @@ export const MovieList = (props) => {
         <div></div>
       )}
 
-        <div className="flex justify-center bg-primary p-10 px-10">
+        <div className="flex justify-center bg-primary pb-10 ">
         <div className="grid justify-center xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-9">
           {movies.map((movie) => (
             <div key={movie.id}>

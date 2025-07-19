@@ -15,7 +15,7 @@ export const Header = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   return (
     <>
-      <div className="bg-secondary h-15  flex justify-between items-center p-6 text-fourth">
+      <div className="bg-white/10 backdrop-blur-lg fixed h-16 top-0 left-0 w-full z-50 flex justify-between items-center p-6 text-fourth">
         <h1 className="text-2xl ">MovieXplorer</h1>
 
         <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
@@ -53,7 +53,7 @@ export const Header = () => {
       </div>
 
       {menuOpen && (
-        <div className="md:hidde bg-secondary rounded-md p-4 m-1 space-y-4">
+        <div className="md:hidden fixed top-16  left-0 w-full h-90 bg-secondary/90 z-40 backdrop-blur-md  rounded-md p-4 m-1 space-y-4">
           <ul className="flex flex-col gap-4">
             <NavLink to="/" onClick={toggleMenu}>
               <li className="hover:bg-fourth py-2 px-1 rounded-md hover:text-primary">

@@ -3,10 +3,12 @@ import { MovieList } from "../pages/MovieList.jsx";
 import { MovieDetails } from "../pages/MovieDetails.jsx";
 import {Search} from "../pages/Search.jsx"
 import {PageNotFound} from "../pages/PageNotFound.jsx"
+import ScrollToTop from "../ScrollToTop.jsx";
 const AllRoutes = () => {
   const { id } = useParams();
   return (
     <>
+    <ScrollToTop/>
       <Routes>
         <Route
           path="/"
